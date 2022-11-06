@@ -25,5 +25,6 @@ open browser and go to (http://localhost:3000/ "Api docs") - auto generated
 
 #Tasks 
 - [x] simplify get/delete/update config
-- [ ] add lua cloud system
-
+- [ ] lua support
+- [ ] add more functions with user/register/login
+- [ ] admin panel
