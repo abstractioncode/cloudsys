@@ -91,4 +91,11 @@ export class UserController {
         }
         return await this.userService.UpdateConfig(username,config);
     }
+    @Post("GetAllLuas")
+    async getlaus(@Body() Body: any) {
+        const {username} = Body;
+        console.log(username)
+        return await this.userService.FindLuas(username);
+    }
+  
 }

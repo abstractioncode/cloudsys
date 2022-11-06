@@ -1,4 +1,5 @@
 import { Configs } from 'src/configs/entities/configs.entity';
+import { Luas } from 'src/luas/entities/luas.entity';
 import {
     BaseEntity,
     BeforeInsert,
@@ -35,4 +36,7 @@ import {
     password: string;
     @OneToMany(type => Configs, configs => configs.Owner)
     configs: Configs[];
+    
+    @OneToMany(type => Luas, Lua => Lua.Owner)
+    Luas: Luas[];
   }

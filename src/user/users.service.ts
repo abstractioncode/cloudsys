@@ -40,4 +40,11 @@ export class UsersService {
     const user = await this.usersRepository.findOne({ where: [{ username:username }],   });
     return this.configService.UpdateConfig(user.id,config)
   }
+  async FindLuas(username: string): Promise< any> {
+    const user = await this.usersRepository.findOne({ where: [{ username:username }],
+    select: ["id","Luas"],
+    relations: ["Luas"] });
+    console.log(user)
+    return user.Luas
+  }
 }
