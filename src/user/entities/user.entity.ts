@@ -1,5 +1,6 @@
 import { Configs } from 'src/configs/entities/configs.entity';
 import { Luas } from 'src/luas/entities/luas.entity';
+import { Roles } from 'src/roles/entity/roles.entity';
 import {
     BaseEntity,
     BeforeInsert,
@@ -9,6 +10,7 @@ import {
     Generated,
     JoinTable,
     ManyToMany,
+    ManyToOne,
     OneToMany,
     PrimaryColumn,
     PrimaryGeneratedColumn,
@@ -39,4 +41,7 @@ import {
     
     @OneToMany(type => Luas, Lua => Lua.Owner)
     Luas: Luas[];
+    
+    @ManyToOne(type => Roles, (role) => role.id)
+    role: Roles;
   }

@@ -57,4 +57,22 @@ export class UsersService {
     newUser.password = password
     return this.usersRepository.save(newUser)
   }
+  async checkUserPermission(name: string) {
+    const user = await this.usersRepository.find({
+        where: {
+            id: 1,
+        },
+        select: ['role','id'],
+        relations: ['role.permissions'],
+
+    });
+    let returnvalue : boolean = false;
+    user.forEach((user) => {
+        user.role.permissions.forEach((permission) => {
+            if(permission.name == name) return returnvalue = true;
+        })
+    }
+    );
+    return returnvalue;
+}
 }

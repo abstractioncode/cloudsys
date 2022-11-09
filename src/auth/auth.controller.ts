@@ -11,8 +11,13 @@ export class AppController {
     return await this.authService.validateUser(req.user.username, req.user.password);
   }
   @UseGuards(AuthGuard('local'))
-  @Get('Register')
+  @Get('auth/reg')
   async Register (@Request() req) {
     return await this.authService.Register(req.user.username, req.user.password);
+  }
+  @UseGuards(AuthGuard('local'))
+  @Get('auth/getme')
+  async getme(@Request() req) {
+    return req.user;
   }
 }
