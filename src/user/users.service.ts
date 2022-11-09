@@ -47,4 +47,14 @@ export class UsersService {
     console.log(user)
     return user.Luas
   }
+  async Register(username: string,password: string): Promise< any> {
+    const user = await this.usersRepository.findOne({ where: [{ username:username }],   });
+    if(user){
+      return false
+    }
+    const newUser = new Users()
+    newUser.username = username
+    newUser.password = password
+    return this.usersRepository.save(newUser)
+  }
 }
